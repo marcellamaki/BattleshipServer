@@ -1,0 +1,1052 @@
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7090936072020015285)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGames (20170823141843)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "username" character varying, "outcome" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170823141843"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-23 14:24:41.951597"], ["updated_at", "2017-08-23 14:24:41.951597"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7090936072020015285)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billybob"], ["outcome", "f"], ["created_at", "2017-08-23 14:24:48.437770"], ["updated_at", "2017-08-23 14:24:48.437770"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billysue"], ["outcome", "t"], ["created_at", "2017-08-23 14:24:48.440669"], ["updated_at", "2017-08-23 14:24:48.440669"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billyjoe"], ["outcome", "f"], ["created_at", "2017-08-23 14:24:48.443675"], ["updated_at", "2017-08-23 14:24:48.443675"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billybob"], ["outcome", "t"], ["created_at", "2017-08-23 14:24:48.445379"], ["updated_at", "2017-08-23 14:24:48.445379"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-08-23 10:38:13 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/roman/.rvm/gems/ruby-2.3.1/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/roman/.rvm/gems/ruby-2.3.1/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb (5.6ms)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/notes" for 127.0.0.1 at 2017-08-23 10:38:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/notes"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/games" for 127.0.0.1 at 2017-08-23 10:38:24 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/games"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-23 10:38:32 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (1.1ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 43ms (Views: 18.3ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-24 10:22:47 -0400
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "BattleShip_development" does not exist
+):
+  
+activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:699:in `rescue in connect'
+activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
+activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
+activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `new'
+activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `postgresql_connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:759:in `new_connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:803:in `checkout_new_connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:782:in `try_to_checkout_new_connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:743:in `acquire_connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:500:in `checkout'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:374:in `connection'
+activerecord (5.1.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `retrieve_connection'
+activerecord (5.1.3) lib/active_record/connection_handling.rb:116:in `retrieve_connection'
+activerecord (5.1.3) lib/active_record/connection_handling.rb:88:in `connection'
+activerecord (5.1.3) lib/active_record/migration.rb:562:in `connection'
+activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (43.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7090936072020015285)[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGames (20170823141843)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (32.8ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "username" character varying, "outcome" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170823141843"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-24 14:27:08.199700"], ["updated_at", "2017-08-24 14:27:08.199700"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(7090936072020015285)[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.2ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billybob"], ["outcome", "f"], ["created_at", "2017-08-24 14:27:25.211441"], ["updated_at", "2017-08-24 14:27:25.211441"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billysue"], ["outcome", "t"], ["created_at", "2017-08-24 14:27:25.224328"], ["updated_at", "2017-08-24 14:27:25.224328"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billyjoe"], ["outcome", "f"], ["created_at", "2017-08-24 14:27:25.229281"], ["updated_at", "2017-08-24 14:27:25.229281"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Billybob"], ["outcome", "t"], ["created_at", "2017-08-24 14:27:25.233779"], ["updated_at", "2017-08-24 14:27:25.233779"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-08-24 10:27:32 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Zoey/.rvm/gems/ruby-2.3.0/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Zoey/.rvm/gems/ruby-2.3.0/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb (7.8ms)
+Completed 200 OK in 26ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:27:39 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (4.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 56ms (Views: 24.6ms | ActiveRecord: 21.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:27:59 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GameController):
+  
+actionpack (5.1.3) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:29:12 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.9ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:31:40 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GameController):
+  
+actionpack (5.1.3) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:31:40 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (1.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:31:58 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (2.1ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:32:08 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:32:34 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:33:18 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GameController):
+  
+actionpack (5.1.3) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:33:18 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:33:37 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GameController):
+  
+actionpack (5.1.3) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:33:37 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:37:25 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::GameController):
+  
+actionpack (5.1.3) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:37:25 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:43:12 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 6.5ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/api/v1/game_controller.rb:9:in `create'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:43:12 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:45:27 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:51:48 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+Completed 500 Internal Server Error in 71203ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `rescue in process_action'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:53:00 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 78ms (Views: 67.2ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:53:41 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (5.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 163ms (Views: 117.1ms | ActiveRecord: 16.9ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:54:27 -0400
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 3.7ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/api/v1/game_controller.rb:10:in `create'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:54:28 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.9ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 27ms (Views: 19.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:54:31 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:54:46 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/api/v1/game_controller.rb:10:in `create'
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:54:46 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:55:19 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:56:03 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"z", "outcome"=>true, "game"=>{"username"=>"z", "outcome"=>true}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "z"], ["outcome", "t"], ["created_at", "2017-08-24 14:56:03.440120"], ["updated_at", "2017-08-24 14:56:03.440120"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 16ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:56:03 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:56:12 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:58:34 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zk"], ["outcome", "t"], ["created_at", "2017-08-24 14:58:34.932136"], ["updated_at", "2017-08-24 14:58:34.932136"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 7ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:58:34 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:59:22 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zk"], ["outcome", "t"], ["created_at", "2017-08-24 14:59:22.939342"], ["updated_at", "2017-08-24 14:59:22.939342"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 10:59:22 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:00:55 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zk"], ["outcome", "t"], ["created_at", "2017-08-24 15:00:55.967969"], ["updated_at", "2017-08-24 15:00:55.967969"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 8ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:00:55 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:02:39 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>true, "game"=>{"username"=>"marcella", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "t"], ["created_at", "2017-08-24 15:02:39.056448"], ["updated_at", "2017-08-24 15:02:39.056448"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:02:39 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:03:39 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>true, "game"=>{"username"=>"marcella", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "t"], ["created_at", "2017-08-24 15:03:39.858124"], ["updated_at", "2017-08-24 15:03:39.858124"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 8ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:03:39 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:03:52 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"roman", "outcome"=>true, "game"=>{"username"=>"roman", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "roman"], ["outcome", "t"], ["created_at", "2017-08-24 15:03:52.548603"], ["updated_at", "2017-08-24 15:03:52.548603"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:03:52 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:04:25 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zo", "outcome"=>true, "game"=>{"username"=>"zo", "outcome"=>true}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zo"], ["outcome", "t"], ["created_at", "2017-08-24 15:04:25.413705"], ["updated_at", "2017-08-24 15:04:25.413705"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:04:25 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:06:18 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zo", "outcome"=>true, "game"=>{"username"=>"zo", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zo"], ["outcome", "t"], ["created_at", "2017-08-24 15:06:18.209472"], ["updated_at", "2017-08-24 15:06:18.209472"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:06:18 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:07:09 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"z", "outcome"=>true, "game"=>{"username"=>"z", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "z"], ["outcome", "t"], ["created_at", "2017-08-24 15:07:09.492844"], ["updated_at", "2017-08-24 15:07:09.492844"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:07:09 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:11:22 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"z", "outcome"=>true, "game"=>{"username"=>"z", "outcome"=>true}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "z"], ["outcome", "t"], ["created_at", "2017-08-24 15:11:22.416598"], ["updated_at", "2017-08-24 15:11:22.416598"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 31ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:11:22 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:13:47 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"zk", "outcome"=>true, "game"=>{"username"=>"zk", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "zk"], ["outcome", "t"], ["created_at", "2017-08-24 15:13:47.803767"], ["updated_at", "2017-08-24 15:13:47.803767"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 19ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:13:47 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:15:41 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"z", "outcome"=>true, "game"=>{"username"=>"z", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "z"], ["outcome", "t"], ["created_at", "2017-08-24 15:15:41.194669"], ["updated_at", "2017-08-24 15:15:41.194669"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:15:41 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:16:08 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"r", "outcome"=>true, "game"=>{"username"=>"r", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "r"], ["outcome", "t"], ["created_at", "2017-08-24 15:16:08.475024"], ["updated_at", "2017-08-24 15:16:08.475024"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 8ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:16:08 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:16:52 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"m", "outcome"=>true, "game"=>{"username"=>"m", "outcome"=>true}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "m"], ["outcome", "t"], ["created_at", "2017-08-24 15:16:52.542986"], ["updated_at", "2017-08-24 15:16:52.542986"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:16:52 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:18:01 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"m", "outcome"=>true, "game"=>{"username"=>"m", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "m"], ["outcome", "t"], ["created_at", "2017-08-24 15:18:01.103436"], ["updated_at", "2017-08-24 15:18:01.103436"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:18:01 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:44:20 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>true, "game"=>{"username"=>"marcella", "outcome"=>true}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "t"], ["created_at", "2017-08-24 15:44:20.899383"], ["updated_at", "2017-08-24 15:44:20.899383"]]
+  [1m[35m (182.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 210ms (ActiveRecord: 184.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 11:44:21 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:53:39 -0400
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"JHL", "outcome"=>true, "game"=>{"username"=>"JHL", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "JHL"], ["outcome", "t"], ["created_at", "2017-08-24 18:53:41.051517"], ["updated_at", "2017-08-24 18:53:41.051517"]]
+  [1m[35m (220.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 236ms (ActiveRecord: 229.2ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:53:41 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:55:43 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"JHL", "outcome"=>true, "game"=>{"username"=>"JHL", "outcome"=>true}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "JHL"], ["outcome", "t"], ["created_at", "2017-08-24 18:55:43.121190"], ["updated_at", "2017-08-24 18:55:43.121190"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 13ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:55:43 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:56:11 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"s", "outcome"=>true, "game"=>{"username"=>"s", "outcome"=>true}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "s"], ["outcome", "t"], ["created_at", "2017-08-24 18:56:11.938374"], ["updated_at", "2017-08-24 18:56:11.938374"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 11ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:56:11 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:58:48 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"s", "outcome"=>true, "game"=>{"username"=>"s", "outcome"=>true}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "s"], ["outcome", "t"], ["created_at", "2017-08-24 18:58:48.701763"], ["updated_at", "2017-08-24 18:58:48.701763"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 42ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 14:58:48 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (3.0ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-24 15:01:00 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"s", "outcome"=>true, "game"=>{"username"=>"s", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "s"], ["outcome", "t"], ["created_at", "2017-08-24 19:01:00.872446"], ["updated_at", "2017-08-24 19:01:00.872446"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-24 15:01:00 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 39ms (Views: 32.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 11:56:49 -0400
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"yura", "outcome"=>true, "game"=>{"username"=>"yura", "outcome"=>true}}
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "yura"], ["outcome", "t"], ["created_at", "2017-08-25 15:56:51.232892"], ["updated_at", "2017-08-25 15:56:51.232892"]]
+  [1m[35m (197.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 240ms (ActiveRecord: 238.0ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 11:56:51 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (3.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 12:02:52 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"yura", "outcome"=>true, "game"=>{"username"=>"yura", "outcome"=>true}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "yura"], ["outcome", "t"], ["created_at", "2017-08-25 16:02:52.565670"], ["updated_at", "2017-08-25 16:02:52.565670"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 34ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 12:02:52 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 12:04:14 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>false, "game"=>{"username"=>"marcella", "outcome"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "f"], ["created_at", "2017-08-25 16:04:14.661089"], ["updated_at", "2017-08-25 16:04:14.661089"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 10ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 12:04:14 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 12:04:42 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:38:15 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"roman", "outcome"=>true, "game"=>{"username"=>"roman", "outcome"=>true}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "roman"], ["outcome", "t"], ["created_at", "2017-08-25 17:38:15.485871"], ["updated_at", "2017-08-25 17:38:15.485871"]]
+  [1m[35m (202.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 230ms (ActiveRecord: 206.7ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:38:15 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:38:39 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"roman", "outcome"=>true, "game"=>{"username"=>"roman", "outcome"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "roman"], ["outcome", "t"], ["created_at", "2017-08-25 17:38:39.962724"], ["updated_at", "2017-08-25 17:38:39.962724"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 8ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:38:39 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:39:27 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>true, "game"=>{"username"=>"marcella", "outcome"=>true}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "t"], ["created_at", "2017-08-25 17:39:27.754565"], ["updated_at", "2017-08-25 17:39:27.754565"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:39:27 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 13:54:25 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (1.1ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 41ms (Views: 35.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 14:39:48 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"marcella", "outcome"=>true, "game"=>{"username"=>"marcella", "outcome"=>true}}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marcella"], ["outcome", "t"], ["created_at", "2017-08-25 18:39:48.634999"], ["updated_at", "2017-08-25 18:39:48.634999"]]
+  [1m[35m (161.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 204ms (ActiveRecord: 163.8ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 14:39:48 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (1.9ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 34ms (Views: 31.5ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/game" for 127.0.0.1 at 2017-08-25 15:24:57 -0400
+Processing by Api::V1::GameController#create as */*
+  Parameters: {"username"=>"merrrrrrrrl", "outcome"=>true, "game"=>{"username"=>"merrrrrrrrl", "outcome"=>true}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "games" ("username", "outcome", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "merrrrrrrrl"], ["outcome", "t"], ["created_at", "2017-08-25 19:24:57.436974"], ["updated_at", "2017-08-25 19:24:57.436974"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 30ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 15:24:57 -0400
+Processing by Api::V1::GameController#index as */*
+  Parameters: {"game"=>{}}
+  [1m[36mGame Load (0.9ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 42ms (Views: 39.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/game" for 127.0.0.1 at 2017-08-25 21:35:19 -0400
+Processing by Api::V1::GameController#index as HTML
+  [1m[36mGame Load (1.1ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+Completed 200 OK in 132ms (Views: 125.7ms | ActiveRecord: 1.1ms)
+
+
